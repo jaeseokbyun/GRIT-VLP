@@ -1,0 +1,32 @@
+train_file: ['dataset/downstream_json/vqa_train.json',
+             'dataset/downstream_json/vqa_val.json',   
+             'dataset/downstream_json/vg_qa.json']
+             
+test_file: ['dataset/downstream_json/vqa_test.json']
+answer_list: 'dataset/downstream_json/answer_list.json'
+
+vqa_root: 'dataset/coco/' #train2014/
+vg_root: 'dataset/vg/' #image/
+
+image_res: 384
+batch_size_train: 32 
+batch_size_test: 16 
+k_test: 128
+
+alpha: 0
+distill: False
+warm_up: True
+
+eos: '[SEP]'
+
+bert_config: 'configs/config_bert.json'
+
+optimizer: {opt: adamW, lr: 2e-5, weight_decay: 0.02}
+schedular: {sched: cosine, lr: 2e-5, epochs: 8, min_lr: 1e-6, decay_rate: 1, warmup_lr: 1e-5, warmup_epochs: 4, cooldown_epochs: 0}
+
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+train_file: [ 'dataset/json_pretrain/coco.json',
+              'dataset/json_pretrain/vg.json',
+              'dataset/json_pretrain/cc3m_train.json',
+              'dataset/json_pretrain/cc3m_val.json',
+              'dataset/json_pretrain/sbu.json'
+              ]
+# each train_file (json) contains a python list where each item is {'image': img_path, 'caption': text or list_of_text }               
+bert_config: 'configs/config_bert.json'
+
+image_res: 256
+vision_width: 768 #base : 768 #samll : 512
+embed_dim: 256
+batch_size: 128
+temp: 0.07
+mlm_probability: 0.5
+queue_size: 48000 
+search_space: 1920
+train_epochs: 20
+
+optimizer: {opt: adamW, lr: 1e-4, weight_decay: 0.02}
+schedular: {sched: cosine, lr: 1e-4, epochs: 30,  min_lr: 1e-5, decay_rate: 1, warmup_lr: 1e-5,  warmup_epochs: 20, cooldown_epochs: 0}
